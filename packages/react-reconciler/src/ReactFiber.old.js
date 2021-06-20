@@ -68,6 +68,7 @@ import {
   ProfileMode,
   StrictLegacyMode,
   StrictEffectsMode,
+  SmooshMode
 } from './ReactTypeOfMode';
 import {
   REACT_FORWARD_REF_TYPE,
@@ -85,6 +86,7 @@ import {
   REACT_OFFSCREEN_TYPE,
   REACT_LEGACY_HIDDEN_TYPE,
   REACT_CACHE_TYPE,
+  REACT_SMOOSH_TYPE,
 } from 'shared/ReactSymbols';
 
 export type {Fiber};
@@ -503,6 +505,10 @@ export function createFiberFromTypeAndProps(
             mode |= StrictEffectsMode;
           }
         }
+        break;
+      case REACT_SMOOSH_TYPE:
+        fiberTag = Mode;
+        mode |= SmooshMode;
         break;
       case REACT_PROFILER_TYPE:
         return createFiberFromProfiler(pendingProps, mode, lanes, key);

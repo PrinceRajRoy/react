@@ -201,7 +201,7 @@ if (supportsMutation) {
     // children to find all the terminal nodes.
     let node = workInProgress.child;
     while (node !== null) {
-      if (node.tag === HostComponent || node.tag === HostText) {
+      if (node.tag === HostComponent && node.type !== 'div' || node.tag === HostText) {
         appendInitialChild(parent, node.stateNode);
       } else if (node.tag === HostPortal) {
         // If we have a portal child, then we don't want to traverse
@@ -784,6 +784,7 @@ function completeWork(
   workInProgress: Fiber,
   renderLanes: Lanes,
 ): Fiber | null {
+  // console.log('complete work on', workInProgress.type)
   const newProps = workInProgress.pendingProps;
 
   switch (workInProgress.tag) {
@@ -890,7 +891,7 @@ function completeWork(
             // commit-phase we mark this as such.
             markUpdate(workInProgress);
           }
-        } else {
+        } else if(type !== 'div') {
           const instance = createInstance(
             type,
             newProps,
@@ -898,6 +899,8 @@ function completeWork(
             currentHostContext,
             workInProgress,
           );
+
+          // console.log('state node: ', instance);
 
           appendAllChildren(instance, workInProgress, false, false);
 

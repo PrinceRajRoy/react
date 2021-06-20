@@ -18,6 +18,7 @@ import {
   REACT_LEGACY_HIDDEN_TYPE,
   REACT_SCOPE_TYPE,
   REACT_CACHE_TYPE,
+  REACT_SMOOSH_TYPE,
 } from 'shared/ReactSymbols';
 
 import {Component, PureComponent} from './ReactBaseClasses';
@@ -97,6 +98,7 @@ export {
   REACT_FRAGMENT_TYPE as Fragment,
   REACT_PROFILER_TYPE as Profiler,
   REACT_STRICT_MODE_TYPE as StrictMode,
+  REACT_SMOOSH_TYPE as SmooshMode,
   REACT_DEBUG_TRACING_MODE_TYPE as unstable_DebugTracingMode,
   REACT_SUSPENSE_TYPE as Suspense,
   createElement,

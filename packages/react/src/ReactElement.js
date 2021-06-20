@@ -347,6 +347,12 @@ export function jsxDEV(type, config, maybeKey, source, self) {
  * See https://reactjs.org/docs/react-api.html#createelement
  */
 export function createElement(type, config, children) {
+
+  /* Hack 1 */
+  // if(type === 'div') {
+  //   type = Symbol.for('react.fragment');
+  // }
+  
   let propName;
 
   // Reserved names are extracted

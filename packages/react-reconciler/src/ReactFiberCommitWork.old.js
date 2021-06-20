@@ -1462,8 +1462,8 @@ function insertOrAppendPlacementNodeIntoContainer(
   before: ?Instance,
   parent: Container,
 ): void {
-  const {tag} = node;
-  const isHost = tag === HostComponent || tag === HostText;
+  const {tag, type} = node;
+  const isHost = tag === HostComponent && type !== 'div' || tag === HostText;
   if (isHost) {
     const stateNode = isHost ? node.stateNode : node.stateNode.instance;
     if (before) {
@@ -1664,6 +1664,7 @@ function commitDeletion(
 }
 
 function commitWork(current: Fiber | null, finishedWork: Fiber): void {
+  // console.log('commitwork on', finishedWork.type)
   if (!supportsMutation) {
     switch (finishedWork.tag) {
       case FunctionComponent:

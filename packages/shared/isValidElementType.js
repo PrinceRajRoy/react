@@ -22,6 +22,7 @@ import {
   REACT_SCOPE_TYPE,
   REACT_LEGACY_HIDDEN_TYPE,
   REACT_CACHE_TYPE,
+  REACT_SMOOSH_TYPE,
 } from 'shared/ReactSymbols';
 import {enableScopeAPI, enableCache} from './ReactFeatureFlags';
 
@@ -41,6 +42,7 @@ export default function isValidElementType(type: mixed) {
     type === REACT_PROFILER_TYPE ||
     type === REACT_DEBUG_TRACING_MODE_TYPE ||
     type === REACT_STRICT_MODE_TYPE ||
+    type === REACT_SMOOSH_TYPE ||
     type === REACT_SUSPENSE_TYPE ||
     type === REACT_SUSPENSE_LIST_TYPE ||
     type === REACT_LEGACY_HIDDEN_TYPE ||
